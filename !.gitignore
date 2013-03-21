@@ -1,0 +1,7 @@
+tmp
+public/photos/
+*.gif
+*.png
+*.jpg
+*.img
+public/uploads/
