@@ -1,19 +1,16 @@
-<style type="text/css">
-  .container {
-    margin: 20px auto;
-    width: 600px;
-    padding: 0px 20px 20px 20px;
-    border: 1px dotted black;
-  }
-  th {
-    text-align: left;
-  }
-</style>
-
 <div class="container">
   <h1>Welcome to Flickr!</h1>
-  <h2> Go upload some cat pictures </h2>
-  <a href='/upload/photo'>Right here</a>
+  <% if current_user %>
+  	<h2> Go upload some cat pictures <a href='/upload/photo'>Right here</a></h2>
+  	<a href="/logout">Logout</a>
+  <% else %>
+  	<h1>Sign up or log in <a href="/login">here</a></h1>
+  <% end %>
 </div>
-<img src="<%= @photo_url %>">
+
+<dl><% @photos.each do |photo| %>
+	<dt><%= photo.title %>: <%= photo.description %></dt>
+	<dd><img src="/photos/<%= photo.photo_string.gsub(" ", "_") %>"></dd>
+	</dl>
+<% end %>
 

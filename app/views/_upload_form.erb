@@ -1,8 +1,31 @@
-<form method='post', action = '/upload/photo' enctype='multipart/form-data'>
-	<input type='file', name='photo'>
+<div class="container">
+<form method='post' action = '/upload/photo' enctype='multipart/form-data'>
+	<input type='file' name='photo'>
+	<br>
 	<input type='text' name='title' placeholder='Title (optional)'>
 	<input type='text' name='description' placeholder='Description (optional)'>
-	<!-- Dropdown of user's existing albums, default to new -->
+	<br>
+	<label for="album_id">Add to album...</label>
+	<select name= "album_id">
+		<option value="change" selected ="selected">----</option>
+		<option value="new" id="selectnewalbum">New album</option>
+		<% if current_user %>
+		<% current_user.albums.each do |album| %>
+			<option value="<%= album.id %>"><%= album.title %></option>
+			<option value="wererwer">are we here</option>
+		<% end %>
+		<% end %>
+	</select>
+	<div id="album-form">
+		<br>
+			<input type='text' name='album[title]' placeholder="New album title">
+			<input type='text' name='album[description]'>
+	</div>
 	<br>
 	<input type='submit' value='Upload photo'>
+
 </form>
+
+<br>
+<a href="/">Home</a>
+</div>
