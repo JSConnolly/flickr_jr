@@ -1,13 +1,12 @@
-<div class="container">
-  <h1>Welcome to Flickr!</h1>
-  <% if current_user %>
-  	<h2> Go upload some cat pictures <a href='/upload/photo'>Right here</a></h2>
-  	<a href="/user/<%= current_user.id %>"><%= current_user.name %>'s profile</a>
-  	<a href="/logout">Logout</a>
-  <% else %>
-  	<h1>Sign up or log in <a href="/login">here</a></h1>
-  <% end %>
-</div>
+<h1>Welcome to Flickr!</h1>
+<% if current_user %>
+	<h2> Go upload some cat pictures <a href='/upload/photo'>Right here</a></h2>
+	<a href="/user/<%= current_user.id %>"><%= current_user.name %>'s profile</a>
+	<a href="/logout">Logout</a>
+<% else %>
+	<h1>Sign up or log in <a href="/login">here</a></h1>
+<% end %>
+
 
 <dl><% @photos.each do |photo| %>
 	<dt><%= photo.title %>: <%= photo.description %></dt>

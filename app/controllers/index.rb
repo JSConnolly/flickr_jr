@@ -3,6 +3,9 @@ get '/' do
   erb :index
 end
 
+
+########## ALBUM CONTROLLER #################
+
 get '/upload/photo' do 
 	# @user_albums = User.find(session[:user_id]).albums
 	puts current_user.albums
@@ -34,6 +37,14 @@ post '/upload/photo' do
 	redirect '/'
 	end
 end
+
+get '/album/:album_id' do
+	@album = Album.find(params[:album_id])
+
+	erb :album
+end
+
+#### USER CONTROLLER ########
 
 get '/user/:id' do
   @user = User.find(params[:id])

@@ -1,0 +1,14 @@
+<h1><%= current_user.name %>'s "<%= @album.title %>" Album</h1>
+<h3><%= @album.description %></h3>
+<table>
+<div class="carousel">
+<% @album.photos.each do |photo| %>
+	<tr>
+		<td><%= photo.title %></td>
+		<td><%= photo.description %></td>
+		<td><img src="/photos/<%= photo.photo_string.gsub(" ", "_") %>"></td>
+	</tr>
+<% end %>
+</div>
+</table>
+<a href='/'>back to flickr</a>
