@@ -1,4 +1,6 @@
 get '/' do
+	@photo_url = "/photos/#{Photo.find(2).photo_string.gsub(" ", "_")}"
+	
   erb :index
 end
 
@@ -11,7 +13,7 @@ post '/upload/photo' do
 
 	@photo = Photo.create( title: params[:title], description: params[:description], photo_string: params[:photo][:filename])
 
-	@photo_url = p.retrieve_from_store!(@photo.photo_string)
+	session[:photo_url] = p.retrieve_from_store!(@photo.photo_string)
 
 	redirect '/'
 end
