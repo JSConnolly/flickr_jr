@@ -1,5 +1,19 @@
 <div class="container">
 <h1>Welcome back <%= @user.name %></h1>
 <h3>Your albums</h3>
+<table>
+<% @albums.each do |album| %>
+	<tr>
+		<td><%= album.title %></td>
+		<td><%= album.description %></td>
+		<td># photos: <%= album.photos.count %></td>
+		<td>
+		<%album.photos.each do |photo| %>
+			<img src="/photos/<%= photo.photo_string.gsub(" ", "_") %>">
+		<% end %>
+		</td>
+	</tr>
+<% end %>
+</table>
 <a href='/'>back to flickr</a>
 </div>

@@ -37,6 +37,7 @@ end
 
 get '/user/:id' do
   @user = User.find(params[:id])
+  @albums = @user.albums
   erb :userpage  
 end
 
