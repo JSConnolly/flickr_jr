@@ -40,7 +40,6 @@ end
 
 get '/album/:album_id' do
 	@album = Album.find(params[:album_id])
-
 	erb :album
 end
 
